@@ -13,7 +13,6 @@
 		5B5A01492203A59800B65565 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5B5A01482203A59800B65565 /* .gitignore */; };
 		5BB76A2D220313970077ECDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76A2C220313970077ECDB /* AppDelegate.swift */; };
 		5BB76A32220313970077ECDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB76A30220313970077ECDB /* Main.storyboard */; };
-		5BB76A35220313970077ECDB /* TestTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76A33220313970077ECDB /* TestTask.xcdatamodeld */; };
 		5BB76A37220313980077ECDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB76A36220313980077ECDB /* Assets.xcassets */; };
 		5BB76A3A220313980077ECDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB76A38220313980077ECDB /* LaunchScreen.storyboard */; };
 		5BB76A42220334B60077ECDB /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76A41220334B60077ECDB /* ApiService.swift */; };
@@ -32,7 +31,6 @@
 		5BB76A29220313970077ECDB /* TestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB76A2C220313970077ECDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BB76A31220313970077ECDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5BB76A34220313970077ECDB /* TestTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestTask.xcdatamodel; sourceTree = "<group>"; };
 		5BB76A36220313980077ECDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BB76A39220313980077ECDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BB76A3B220313980077ECDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +54,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B99D1D52203A7B30052ABD7 /* ProfuctListVC */ = {
+			isa = PBXGroup;
+			children = (
+				5BB76A432203352F0077ECDB /* ProductListVC.swift */,
+				5BB76A45220335880077ECDB /* ProductListCell.swift */,
+			);
+			path = ProfuctListVC;
+			sourceTree = "<group>";
+		};
+		5B99D1D62203A7CF0052ABD7 /* TopicsVC */ = {
+			isa = PBXGroup;
+			children = (
+				5B5A014222035F5600B65565 /* TopicsVC.swift */,
+			);
+			path = TopicsVC;
+			sourceTree = "<group>";
+		};
+		5B99D1D72203A7EC0052ABD7 /* ProductVC */ = {
+			isa = PBXGroup;
+			children = (
+				5B5A01462203980B00B65565 /* ProductVC.swift */,
+			);
+			path = ProductVC;
+			sourceTree = "<group>";
+		};
+		5B99D1D82203A8060052ABD7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5BB76A41220334B60077ECDB /* ApiService.swift */,
+				5BB76A47220335E10077ECDB /* Product.swift */,
+				5B5A0144220362A000B65565 /* Topic.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5B99D1D92203A82D0052ABD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5BB76A36220313980077ECDB /* Assets.xcassets */,
+				5BB76A2C220313970077ECDB /* AppDelegate.swift */,
+				5BB76A30220313970077ECDB /* Main.storyboard */,
+				5BB76A38220313980077ECDB /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		5BB76A20220313970077ECDB = {
 			isa = PBXGroup;
 			children = (
@@ -78,19 +122,12 @@
 		5BB76A2B220313970077ECDB /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
-				5BB76A2C220313970077ECDB /* AppDelegate.swift */,
-				5BB76A41220334B60077ECDB /* ApiService.swift */,
-				5BB76A47220335E10077ECDB /* Product.swift */,
-				5B5A0144220362A000B65565 /* Topic.swift */,
-				5BB76A432203352F0077ECDB /* ProductListVC.swift */,
-				5BB76A45220335880077ECDB /* ProductListCell.swift */,
-				5B5A014222035F5600B65565 /* TopicsVC.swift */,
-				5B5A01462203980B00B65565 /* ProductVC.swift */,
-				5BB76A30220313970077ECDB /* Main.storyboard */,
-				5BB76A36220313980077ECDB /* Assets.xcassets */,
-				5BB76A38220313980077ECDB /* LaunchScreen.storyboard */,
+				5B99D1D92203A82D0052ABD7 /* Supporting Files */,
+				5B99D1D82203A8060052ABD7 /* Model */,
+				5B99D1D62203A7CF0052ABD7 /* TopicsVC */,
+				5B99D1D52203A7B30052ABD7 /* ProfuctListVC */,
+				5B99D1D72203A7EC0052ABD7 /* ProductVC */,
 				5BB76A3B220313980077ECDB /* Info.plist */,
-				5BB76A33220313970077ECDB /* TestTask.xcdatamodeld */,
 			);
 			path = TestTask;
 			sourceTree = "<group>";
@@ -236,7 +273,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BB76A442203352F0077ECDB /* ProductListVC.swift in Sources */,
-				5BB76A35220313970077ECDB /* TestTask.xcdatamodeld in Sources */,
 				5BB76A42220334B60077ECDB /* ApiService.swift in Sources */,
 				5BB76A2D220313970077ECDB /* AppDelegate.swift in Sources */,
 				5B5A014322035F5600B65565 /* TopicsVC.swift in Sources */,
@@ -447,19 +483,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5BB76A33220313970077ECDB /* TestTask.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5BB76A34220313970077ECDB /* TestTask.xcdatamodel */,
-			);
-			currentVersion = 5BB76A34220313970077ECDB /* TestTask.xcdatamodel */;
-			path = TestTask.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5BB76A21220313970077ECDB /* Project object */;
 }
