@@ -54,33 +54,45 @@ class ApiService {
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding(arrayEncoding: .noBrackets),
-                          headers: headers).responseJSON { (response) in
-                            
-                            let jsonString = response.result.value
-                            let jsonArray = JSON(jsonString!).dictionaryValue["posts"]?.arrayValue
-                            
-                            for jsonProduct in jsonArray! {
-                                
-                                let name = jsonProduct.dictionaryValue["name"]!.stringValue
-                                let tagline = jsonProduct.dictionaryValue["tagline"]!.stringValue
-                                let upvotes = jsonProduct.dictionaryValue["votes_count"]!.intValue
-                                let thumbnailUrl = jsonProduct.dictionaryValue["thumbnail"]!["image_url"].url!
-                                let screenshotUrl = jsonProduct.dictionaryValue["screenshot_url"]!.first!.1.url!
-                                let link = jsonProduct.dictionaryValue["redirect_url"]!.url!
-                                
-                                let product = Product(name: name,
-                                                      tagline: tagline,
-                                                      upvotes: upvotes,
-                                                      thumbnailUrl: thumbnailUrl,
-                                                      screenshotUrl: screenshotUrl,
-                                                      link: link)
-                                
-                                arrayOfProducts.append(product)
-                                
-                            }
-                            
-                            self.currentArrayOfProducts = arrayOfProducts
-        }
+                          headers: headers).responseJSON
+            { (response) in
+                
+                switch response.result {
+                    
+                case .success:
+                    
+                    let jsonString = response.result.value
+                    let jsonArray = JSON(jsonString!).dictionaryValue["posts"]?.arrayValue ?? []
+                    
+                    for jsonProduct in jsonArray {
+                        
+                        let name = jsonProduct.dictionaryValue["name"]!.stringValue
+                        let tagline = jsonProduct.dictionaryValue["tagline"]!.stringValue
+                        let upvotes = jsonProduct.dictionaryValue["votes_count"]!.intValue
+                        let thumbnailUrl = jsonProduct.dictionaryValue["thumbnail"]!["image_url"].url!
+                        let screenshotUrl = jsonProduct.dictionaryValue["screenshot_url"]!.first!.1.url!
+                        let link = jsonProduct.dictionaryValue["redirect_url"]!.url!
+                        
+                        let product = Product(name: name,
+                                              tagline: tagline,
+                                              upvotes: upvotes,
+                                              thumbnailUrl: thumbnailUrl,
+                                              screenshotUrl: screenshotUrl,
+                                              link: link)
+                        
+                        arrayOfProducts.append(product)
+                        
+                    }
+                    
+                    self.currentArrayOfProducts = arrayOfProducts
+                    
+                case .failure:
+                    
+                    print(response.result.error)
+                    
+                }
+                
+            }
         
     }
     
@@ -113,7 +125,7 @@ class ApiService {
                           headers: headers).responseJSON { (response) in
                             
                             let jsonString = response.result.value
-                            let jsonArray = JSON(jsonString!).dictionaryValue["topics"]!.arrayValue
+                            let jsonArray = JSON(jsonString!).dictionaryValue["topics"]?.arrayValue ?? []
                             
                             for jsonTopic in jsonArray {
                                 

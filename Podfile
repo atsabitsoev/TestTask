@@ -9,6 +9,8 @@ target 'TestTask' do
 
 pod 'Alamofire'
 
+pod 'AlamofireImage'
+
 pod 'SwiftyJSON'
 
 end

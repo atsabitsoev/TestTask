@@ -9,6 +9,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 class ProductListVC: UITableViewController {
     
@@ -45,7 +46,26 @@ class ProductListVC: UITableViewController {
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-
+        
+        if products.count == 0 {
+            
+            let view = UIView(frame: tableView.frame)
+            
+            let label = UILabel(frame: CGRect(x: 16,
+                                              y: Int(view.bounds.height/2),
+                                              width: Int(view.bounds.width - 32),
+                                              height: 50))
+            label.text = "Ожидание..."
+            label.textColor = UIColor.darkGray
+            label.textAlignment = .center
+            
+            view.addSubview(label)
+            tableView.backgroundView = view
+            
+        } else {
+            tableView.backgroundView = UIView()
+        }
+        
         return 1
         
     }
@@ -65,10 +85,14 @@ class ProductListVC: UITableViewController {
         cell.labTagline.text = products[indexPath.row].tagline
         cell.labUpvotes.text = "\(products[indexPath.row].upvotes) votes"
         
-        Alamofire.request(products[indexPath.row].thumbnailUrl).response { (response) in
-            cell.imThumbnail.image = UIImage(data: response.data!)
-        }
-        
+        Alamofire.request(products[indexPath.row].thumbnailUrl).responseImage
+            { (response) in
+                
+                if let image = response.result.value {
+                    cell.imThumbnail.image = image
+                }
+                
+            }
         
         return cell
     }
@@ -83,10 +107,12 @@ class ProductListVC: UITableViewController {
     
     @objc func productsUpdated() {
         
-        print(ApiService.standard.currentTopic.id)
         self.products = ApiService.standard.currentArrayOfProducts
+        
         self.navigationController?.navigationBar.items?.first?.rightBarButtonItem?.title = ApiService.standard.currentTopic.name
+        
         self.tableView.reloadData()
+        
         refresher.endRefreshing()
 
     }
